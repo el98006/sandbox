@@ -9,7 +9,7 @@ import asyncio
 
 # Tell Tornado to use the asyncio eventloop
 AsyncIOMainLoop().install()
-# get the loop
+
 loop = asyncio.get_event_loop()
 # the Tornado HTTP client
 http_client = AsyncHTTPClient()
@@ -24,8 +24,8 @@ def aio_fetch(client, url, **kwargs):
 @asyncio.coroutine
 def main():
     print("fetching my site")
-    mysite = yield from aio_fetch(http_client, "http://pepijndevos.nl/")
-    print("my site said", mysite.reason)
+    response = yield from aio_fetch(http_client, "http://www.yahoo.com/")
+    print("my site said", response.reason)
     print("hello httpbin")
     httpbin = yield from aio_fetch(http_client, "http://httpbin.org/get?code=%d" % mysite.code)
     print(httpbin.body.decode())

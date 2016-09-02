@@ -18,5 +18,6 @@ records = [
     ('IBM', 50, 91.15)
 ]
 
+
 print(compute_cost(records))
 
